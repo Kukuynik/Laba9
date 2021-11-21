@@ -8,40 +8,93 @@ namespace Laba9
 {
     public class Building
     {
-        static uint _counter = 1;
+        private static int numberStatic = 1; 
+        private int _number; 
+        private double _height; 
+        private int _levelsCount;
+        private int _apartmentsCount; 
+        private int _entryCount; 
         
-        uint _idBuilding;
-        float _height;
-        uint _floor;
-        uint _flat;
-        uint _entrance;
-        float _floorHeight;
-        uint _flatOnEntrance;
-        uint _flatOnFloor;
 
-        public void Add(float height, uint floor, uint flat, uint entrance)
+        public Building()
         {
-            _idBuilding = CounterPlus(_counter);
+            _number = numberStatic;
+            NumberIncrement();
+        }
+        public Building(double height, int levelsCount,int apartmentCount,int entryCount )
+        {
+            _number = numberStatic;
             _height = height;
-            _floor = floor;
-            _flat = flat;
-            _entrance = entrance;
+            _levelsCount = levelsCount;
+            _apartmentsCount = apartmentCount;
+            _entryCount = entryCount;
+            NumberIncrement();
         }
-        public void floorHeight()
+
+        private static void NumberIncrement() 
         {
-            _floorHeight = _height / _height;
+            numberStatic += 1;
         }
-        public void flatOnEntrance()
+
+        public void setHeight(double height)
         {
-            _flatOnEntrance = _flat / _entrance;
+            if (height > 0)
+                _height = height;
         }
-        public void flatOnFloor()
+
+        public void setLevelsCount(int Count)
         {
-            _flatOnFloor = _flatOnEntrance / _floor;
+            if (Count > 0)
+                _levelsCount = Count;
         }
-        public uint CounterPlus(uint counter)
+
+        public void setApartmentsCount(int Count)
         {
-            return counter++;
+            if (Count > 0)
+                _apartmentsCount = Count;
+        }
+
+        public void setEntryCount(int Count)
+        {
+            if (Count > 0)
+                _entryCount = Count;
+        }
+
+        public int GetNumber()
+        {
+            return _number;
+        }
+        public double GetHeight()
+        {
+            return _height;
+        }
+        public int GetLevelsCount()
+        {
+            return _levelsCount;
+        }
+        public int GetApartmentsCount()
+        {
+            return _apartmentsCount;
+        }
+
+        public int GetEntryCount()
+        {
+            return _entryCount;
+        }
+
+        public double LevelsHeight() 
+        {
+            return _height / _levelsCount;
+        }
+
+        public double ApartmentsInLevel() 
+        {
+            return _apartmentsCount / _levelsCount;
+        }
+
+        public double ApartmensInEntry() 
+        {
+            return _apartmentsCount / _entryCount;
         }
     }
 }
