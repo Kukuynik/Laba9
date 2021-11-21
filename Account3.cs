@@ -80,5 +80,17 @@ namespace Laba9
                 }
             }
         }
+        public void PutMoney(int money)
+        {
+            _balance += money;
+        }
+
+        public void TakeMoney(int money)
+        {
+            if (_balance >= money)
+            {
+                _balance -= money;
+            }
+        }
     }
 }
